@@ -11,6 +11,7 @@
 
   --font-mono: 'JetBrains Mono', monospace;
   --font-sans: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
 
   --max-w: 1100px;
   --space-1: 8px;
@@ -129,7 +130,7 @@ section {
 }
 
 .section-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.6vw, 2rem);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -160,7 +161,7 @@ section {
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
 
 .hero-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4.2vw, 3.4rem);
   font-weight: 700;
   line-height: 1.15;
@@ -384,7 +385,7 @@ section {
 .node-stage span:nth-child(odd) { color: var(--amber); }
 
 .node-card h3 {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 1.25rem;
   margin-bottom: var(--space-2);
 }

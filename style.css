@@ -223,6 +223,60 @@ section {
   margin-left: 2px;
 }
 .btn:hover .btn-arrow { transform: translateX(4px); }
+/* ===== TECH MARQUEE ===== */
+.marquee-strip {
+  max-width: 100%;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-dim);
+  overflow: hidden;
+  padding: var(--space-3) 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 24s linear infinite;
+}
+
+.marquee-strip:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+}
+
+.marquee-group span {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  position: relative;
+  padding-right: var(--space-4);
+  margin-right: var(--space-4);
+}
+
+.marquee-group span::after {
+  content: '•';
+  position: absolute;
+  right: calc(var(--space-4) * -1 + 4px);
+  color: var(--amber);
+}
+
+.marquee-group span:last-child {
+  margin-right: 0;
+  padding-right: 0;
+}
+.marquee-group span:last-child::after {
+  content: '';
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 /* Terminal decoration */
 .hero-terminal {

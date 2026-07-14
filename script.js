@@ -1,5 +1,5 @@
 // Reveal pipeline nodes as they enter the viewport
-const nodes = document.querySelectorAll('.node');
+const nodes = document.querySelectorAll('.node, .reveal');
 const pipelinePath = document.querySelector('.pipeline-line path');
 
 const revealObserver = new IntersectionObserver((entries) => {

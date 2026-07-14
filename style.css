@@ -1,8 +1,8 @@
 /* ===== TOKENS ===== */
   :root {
-  --paper: #85a5115b;
-  --paper-dim: #77530b;
-  --ink: #4160aa;
+  --paper: #39bb87;
+  --paper-dim: #7adbb4;
+  --ink: #1A1F2B;
   --ink-soft: #4A4F5C;
   --signal: #2B5EA7;
   --signal-dim: #DCE6F2;
@@ -69,10 +69,19 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(247, 245, 240, 0.85);
+  background: rgba(26, 31, 43, 0.92);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--ink);
 }
+
+.nav-mark {
+  color: var(--paper);
+}
+
+.nav-links a {
+  color: rgba(247, 245, 240, 0.65);
+}
+.nav-links a:hover { color: var(--paper); }
 
 .nav-inner {
   max-width: var(--max-w);
@@ -227,9 +236,9 @@ section {
 /* ===== TECH MARQUEE ===== */
 .marquee-strip {
   max-width: 100%;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: var(--paper-dim);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: var(--ink);
   overflow: hidden;
   padding: var(--space-3) 0;
 }
@@ -252,7 +261,7 @@ section {
 .marquee-group span {
   font-family: var(--font-mono);
   font-size: 0.95rem;
-  color: var(--ink-soft);
+  color: rgba(247, 245, 240, 0.65);
   white-space: nowrap;
   position: relative;
   padding-right: var(--space-4);
@@ -343,6 +352,15 @@ section {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .node.in-view { opacity: 1; transform: translateY(0); }
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .node-marker {
   position: absolute;

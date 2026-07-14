@@ -16,12 +16,12 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-mark">WZ<span class="dot">.</span></a>
+    <a href="#top" class="nav-mark">Waleed Zafar<span class="dot">.</span></a>
     <nav class="nav-links">
-      <a href="#work">work</a>
-      <a href="#about">about</a>
-      <a href="#stack">stack</a>
-      <a href="#contact">contact</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -31,7 +31,7 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero-inner">
-      <p class="eyebrow"><span class="blink">●</span> available for freelance — Aug 2026</p>
+      <p class="eyebrow"><span class="blink">●</span> Available for freelance — Aug 2026</p>
       <h1 class="hero-title">
         I build things that<br>
         <span class="hero-highlight">take input, do the work,<br>and return an output.</span>
@@ -41,24 +41,163 @@
         I chain APIs, agents, and models into tools that solve one real problem well.
       </p>
       <div class="hero-cta">
-        <a href="#work" class="btn btn-primary">see the pipeline →</a>
-        <a href="mailto:youremail@example.com" class="btn btn-ghost">say hello</a>
+        <a href="#work" class="btn btn-primary">See the Pipeline →</a>
+        <a href="mailto:youremail@example.com" class="btn btn-ghost">Say Hello</a>
       </div>
     </div>
     <div class="hero-terminal" aria-hidden="true">
       <div class="terminal-bar"><span></span><span></span><span></span></div>
       <div class="terminal-body">
-        <p><span class="prompt">&gt;</span> whoami</p>
-        <p class="out">waleed_zafar / ai_developer</p>
-        <p><span class="prompt">&gt;</span> stack --list</p>
-        <p class="out">python · flask · groq_api · llama3.3</p>
-        <p><span class="prompt">&gt;</span> status</p>
-        <p class="out">building. shipping. open to work<span class="cursor">▌</span></p>
+        <p><span class="prompt">&gt;</span> Who Am I ?</p>
+        <p class="out">Waleed_Zafar / AI_Developer</p>
+        <p><span class="prompt">&gt;</span> Stack --List</p>
+        <p class="out">Python · Flask · Groq_Api · Llama3.3</p>
+        <p><span class="prompt">&gt;</span> Status</p>
+        <p class="out">Building. Shipping. Open to Work<span class="cursor">▌</span></p>
       </div>
     </div>
   </section>
 
   <!-- WORK / PIPELINE -->
   <section class="work" id="work">
-    <p class="section-eyebrow">01 / selected work</p>
-    <h2 class="section-title">Every project
+    <p class="section-eyebrow">01 / Selected Work</p>
+    <h2 class="section-title">Every project below runs the same way I write code —<br>input, process, output.</h2>
+
+    <div class="pipeline">
+      <svg class="pipeline-line" viewBox="0 0 4 900" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,0 L2,900" />
+      </svg>
+
+      <article class="node" data-node="1">
+        <div class="node-marker"><span class="node-dot"></span></div>
+        <div class="node-card">
+          <div class="node-stage">
+            <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+          </div>
+          <h3>Multi-Agent Resume Tailor</h3>
+          <p class="node-desc">
+            A job description and a base resume go in. A team of agents rewrites, restructures,
+            and formats the content to match the role, then hands back a formatted Word document —
+            two-column layout, correct capitalization, ready to send.
+          </p>
+          <ul class="node-tags">
+            <li>Python</li><li>Multi-agent pipeline</li><li>python-docx</li>
+          </ul>
+          <div class="node-links">
+            <a href="#" class="node-link">View code ↗</a>
+            <a href="#" class="node-link">Live demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="node" data-node="2">
+        <div class="node-marker"><span class="node-dot"></span></div>
+        <div class="node-card">
+          <div class="node-stage">
+            <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+          </div>
+          <h3>AI Writing Assistant</h3>
+          <p class="node-desc">
+            Rough or informal text goes in. Llama 3.3 70B, served through the Groq API,
+            rewrites it for grammar, tone, and clarity — built on a Flask backend that
+            keeps response times fast enough to feel live.
+          </p>
+          <ul class="node-tags">
+            <li>Flask</li><li>Groq API</li><li>Llama 3.3 70B</li>
+          </ul>
+          <div class="node-links">
+            <a href="#" class="node-link">View code ↗</a>
+            <a href="#" class="node-link">Live demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="node" data-node="3">
+        <div class="node-marker"><span class="node-dot"></span></div>
+        <div class="node-card">
+          <div class="node-stage">
+            <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+          </div>
+          <h3>AI Personality Quiz</h3>
+          <p class="node-desc">
+            A short set of answers goes in. The model scores and interprets responses
+            in real time, then returns a personalized read-out — no static, hardcoded
+            result banks.
+          </p>
+          <ul class="node-tags">
+            <li>Python</li><li>LLM API</li><li>Web app</li>
+          </ul>
+          <div class="node-links">
+            <a href="#" class="node-link">View code ↗</a>
+            <a href="#" class="node-link">Live demo ↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <p class="section-eyebrow">02 / About</p>
+    <div class="about-grid">
+      <h2 class="section-title">
+        I studied language before I studied code — that's why I care whether the output actually reads right.
+      </h2>
+      <div class="about-body">
+        <p>
+          I'm a BS AI student at UET Lahore with a background in English teaching, which
+          shapes a lot of what I build — tools like a grammar and writing assistant come
+          from noticing where language and automation actually intersect for real people.
+        </p>
+        <p>
+          Right now I'm focused on API integration and AI chatbot development: taking a
+          business problem, wiring the right model and the right data together, and shipping
+          something that solves it — not a demo, a tool someone can actually use.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="stack" id="stack">
+    <p class="section-eyebrow">03 / Stack</p>
+    <h2 class="section-title">What I build with</h2>
+    <div class="stack-grid">
+      <div class="stack-item"><span class="stack-label">languages</span><span class="stack-value">Python · JavaScript</span></div>
+      <div class="stack-item"><span class="stack-label">backend</span><span class="stack-value">Flask · REST APIs</span></div>
+      <div class="stack-item"><span class="stack-label">ai / llm</span><span class="stack-value">Groq API · Llama 3.3 70B · Prompt design</span></div>
+      <div class="stack-item"><span class="stack-label">documents</span><span class="stack-value">python-docx · Automated formatting</span></div>
+      <div class="stack-item"><span class="stack-label">tools</span><span class="stack-value">Git · GitHub · VS Code</span></div>
+      <div class="stack-item"><span class="stack-label">currently learning</span><span class="stack-value">Payment API integration</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <p class="section-eyebrow">04 / Contact</p>
+    <h2 class="section-title contact-title">Have a problem an AI tool could solve?<br>Tell me what it does — I'll tell you if I can build it.</h2>
+    <div class="contact-links">
+      <a href="mailto:youremail@example.com" class="contact-link">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">waleedzafar161@gmail.com ↗</span>
+      </a>
+      <a href="https://github.com/waleedzafar9" class="contact-link" target="_blank" rel="noopener">
+        <span class="contact-label">github</span>
+        <span class="contact-value">github.com/waleedzafar9 ↗</span>
+      </a>
+      <a href="#" class="contact-link" target="_blank" rel="noopener">
+        <span class="contact-label">Linkedin</span>
+        <span class="contact-value">linkedin.com/in/your-handle ↗</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Built by Waleed Zafar. No template, no theme — just HTML, CSS, and JS.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

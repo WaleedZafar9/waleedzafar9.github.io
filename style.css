@@ -79,14 +79,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-links a {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: rgba(242, 241, 239, 0.7);
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  color: rgba(242, 241, 239, 0.85) !important;
   position: relative;
   padding-bottom: 2px;
   transition: color 0.2s ease;
 }
-.nav-links a:hover { color: var(--paper); }
+.nav-links a:hover { color: var(--paper) !important; }
 
 .nav-inner {
   max-width: var(--max-w);

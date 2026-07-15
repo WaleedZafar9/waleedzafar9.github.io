@@ -361,7 +361,29 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
-
+/* ===== ANIMATED HEADING HIGHLIGHT ===== */
+.highlight {
+  position: relative;
+  display: inline;
+  white-space: normal;
+}
+.highlight::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 0.12em;
+  bottom: 0.05em;
+  background: var(--amber);
+  opacity: 0.35;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.highlight.in-view::before {
+  transform: scaleX(1);
+}
 .node-marker {
   position: absolute;
   left: -48px;
@@ -377,8 +399,9 @@ section {
   transition: border-color 0.4s ease, background 0.4s ease;
 }
 .node.in-view .node-dot { border-color: var(--signal); background: var(--signal); }
-
 .node-card {
+  position: relative;
+  overflow: hidden;
   background: white;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -390,6 +413,27 @@ section {
   box-shadow: 0 12px 30px -18px rgba(43,94,167,0.35);
 }
 
+.node-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(43, 94, 167, 0.12),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.node-card:hover::before {
+  opacity: 1;
+}
+
+.node-card > * {
+  position: relative;
+  z-index: 1;
+}
 .node-stage {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -586,7 +630,39 @@ section {
   font-family: var(--font-mono);
   font-size: 1.1rem;
 }
+/* ===== SECTION SEPARATION: full-bleed bands + number watermark ===== */
+section[data-num] {
+  position: relative;
+  overflow: hidden;
+}
 
+section[data-num] > * {
+  position: relative;
+  z-index: 1;
+}
+
+section[data-num]::after {
+  content: attr(data-num);
+  position: absolute;
+  top: -0.1em;
+  right: var(--space-3);
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 18vw, 13rem);
+  font-weight: 700;
+  color: var(--ink);
+  opacity: 0.05;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Full-bleed alternating background tint, edge-to-edge regardless of max-width */
+.about,
+.contact {
+  background: var(--paper-dim);
+  box-shadow: 0 0 0 100vmax var(--paper-dim);
+  clip-path: inset(0 -100vmax);
+}
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;

@@ -1,5 +1,5 @@
 // Reveal pipeline nodes as they enter the viewport
-const nodes = document.querySelectorAll('.node, .reveal');
+const nodes = document.querySelectorAll('.node, .reveal, .highlight');
 const pipelinePath = document.querySelector('.pipeline-line path');
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -52,3 +52,15 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '-40% 0px -50% 0px' });
 
 sections.forEach((s) => navObserver.observe(s));
+// ---- Spotlight glow that follows the cursor on project cards ----
+const spotlightCards = document.querySelectorAll('.node-card');
+
+spotlightCards.forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--mouse-x', `${x}%`);
+    card.style.setProperty('--mouse-y', `${y}%`);
+  });
+});

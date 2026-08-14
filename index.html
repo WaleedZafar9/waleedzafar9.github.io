@@ -7,19 +7,21 @@
 <meta name="description" content="Waleed Zafar builds practical AI tools and automation pipelines with Python, Flask, and LLM APIs. AI engineering student at UET, open for freelance work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="grain"></div>
 
-
 <header class="nav">
   <div class="nav-inner">
     <a href="#top" class="nav-mark">
-      <img src="photo.png" alt="Waleed Zafar" class="nav-avatar">
-      <span class="tag"></span>Waleed Zafar<span class="tag"></span>
+      <span class="nav-avatar">WZ</span>
+      <span class="nav-mark-text">
+        <span class="nav-name">Waleed Zafar</span>
+        <span class="nav-role">AI &amp; Automation Developer</span>
+      </span>
     </a>
     <nav class="nav-links">
       <a href="#work">Work</a>
@@ -27,26 +29,36 @@
       <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a href="#contact" class="btn btn-primary btn-small">Let's Build</a>
   </div>
 </header>
+
 <main>
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow-pill">AI · AUTOMATION · REAL IMPACT</p>
       <h1 class="hero-title">
         I build things that<br>
-        <span class="hero-highlight">take input, do the work,<br>and return an output.</span>
+        <span class="hero-highlight">take input, do the work,</span><br>
+        and <span class="hero-highlight">return an output.</span>
       </h1>
       <p class="hero-sub">
-        Waleed Zafar — AI &amp; Automation Developer. BS AI student at UET Lahore.
-        I chain APIs, agents, and models into tools that solve one real problem well.
+        AI &amp; Automation Developer at UET Lahore. I build AI agents,
+        multi-agent systems, and models into tools that solve real problems.
       </p>
       <div class="hero-cta">
-      <a href="#work" class="btn btn-primary">See the Pipeline <span class="btn-arrow">→</span></a>
-
-<a href="mailto:waleedzafar161@gmail.com" class="btn btn-ghost">Say Hello</a>    </div>
+        <a href="#work" class="btn btn-primary">See My Work</a>
+        <a href="mailto:waleedzafar161@gmail.com" class="btn btn-ghost">Say Hello</a>
+      </div>
+      <ul class="hero-badges">
+        <li><span class="dot dot-indigo"></span>AI Automation</li>
+        <li><span class="dot dot-mint"></span>Multi-Agent Systems</li>
+        <li><span class="dot dot-coral"></span>Real-world Impact</li>
+      </ul>
     </div>
+
     <div class="hero-terminal" aria-hidden="true">
       <div class="terminal-bar"><span></span><span></span><span></span></div>
       <div class="terminal-body">
@@ -60,23 +72,48 @@
     </div>
   </section>
 
-
-  <section class="marquee-strip" aria-hidden="true">
-    <div class="marquee-track">
-      <div class="marquee-group">
-        <span>Python</span><span>Flask</span><span>Groq API</span><span>Llama 3.3 70B</span><span>python-docx</span><span>Multi-agent pipelines</span><span>Git</span><span>GitHub</span><span>VS Code</span>
-      </div>
-      <div class="marquee-group">
-        <span>Python</span><span>Flask</span><span>Groq API</span><span>Llama 3.3 70B</span><span>python-docx</span><span>Multi-agent pipelines</span><span>Git</span><span>GitHub</span><span>VS Code</span>
-      </div>
+  <!-- FEATURE STRIP -->
+  <section class="features">
+    <div class="feature-card reveal">
+      <span class="feature-icon icon-indigo">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.36.5.98.5 1.6h6c0-.62 0-1.24.5-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <h3>Problem Solver</h3>
+      <p>I build tools tried and solve real problems.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-icon icon-mint">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="6" y="7" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 3v3M15 3v3M4 11h2M18 11h2M9 21v-3M15 21v-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="9.5" cy="12.5" r="1" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1" fill="currentColor"/></svg>
+      </span>
+      <h3>AI Native</h3>
+      <p>From agents to models, AI is at the core.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-icon icon-coral">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c3 2 5 5.5 5 9.5A5 5 0 0 1 12 17a5 5 0 0 1-5-5.5C7 7.5 9 4 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 17c-.5 1.5-1 2.5-2 3.5M14.5 17c.5 1.5 1 2.5 2 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <h3>Ship Fast</h3>
+      <p>Clean code. Fast delivery. Measurable impact.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-icon icon-lavender">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 19a2.5 2.5 0 0 1 2.5-2.5H20" stroke="currentColor" stroke-width="1.6"/></svg>
+      </span>
+      <h3>Always Learning</h3>
+      <p>Exploring new tech, sharing what I learn.</p>
     </div>
   </section>
 
   <!-- WORK / PIPELINE -->
-  <!-- WORK / PIPELINE -->
   <section class="work" id="work" data-num="01">
-    <p class="section-eyebrow">Selected Work</p>
-<h2 class="section-title">Every project below runs the same way I write code —<br><span class="highlight">input, process, output.</span></h2>
+    <div class="section-head">
+      <div>
+        <p class="section-eyebrow">Featured Work</p>
+        <h2 class="section-title">Every project below runs the same way I write code —<br><span class="highlight">input, process, output.</span></h2>
+      </div>
+      <a href="https://github.com/waleedzafar9" class="link-arrow" target="_blank" rel="noopener">View all projects →</a>
+    </div>
+
     <div class="pipeline">
       <svg class="pipeline-line" viewBox="0 0 4 900" preserveAspectRatio="none" aria-hidden="true">
         <path d="M2,0 L2,900" />
@@ -85,8 +122,13 @@
       <article class="node" data-node="1">
         <div class="node-marker"><span class="node-dot"></span></div>
         <div class="node-card">
-          <div class="node-stage">
-            <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+          <div class="node-top">
+            <span class="node-icon node-icon-green">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M8 6 2 12l6 6M16 6l6 6-6 6M14 4l-4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="node-stage">
+              <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+            </div>
           </div>
           <h3>Multi-Agent Resume Tailor</h3>
           <p class="node-desc">
@@ -97,17 +139,22 @@
           <ul class="node-tags">
             <li>Python</li><li>Multi-agent pipeline</li><li>python-docx</li>
           </ul>
-        <div class="node-links">
-  <a href="https://github.com/WaleedZafar9/Resume_tailor" class="node-link" target="_blank" rel="noopener">View code ↗</a>
-</div>
-</div>
+          <div class="node-links">
+            <a href="https://github.com/WaleedZafar9/Resume_tailor" class="node-link" target="_blank" rel="noopener">View code ↗</a>
+          </div>
+        </div>
       </article>
 
       <article class="node" data-node="2">
         <div class="node-marker"><span class="node-dot"></span></div>
         <div class="node-card">
-          <div class="node-stage">
-            <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+          <div class="node-top">
+            <span class="node-icon node-icon-purple">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="6" y="7" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 3v3M15 3v3M4 11h2M18 11h2M9 21v-3M15 21v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="9.5" cy="12.5" r="1" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1" fill="currentColor"/></svg>
+            </span>
+            <div class="node-stage">
+              <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+            </div>
           </div>
           <h3>AI Writing Assistant</h3>
           <p class="node-desc">
@@ -118,17 +165,22 @@
           <ul class="node-tags">
             <li>Flask</li><li>Groq API</li><li>Llama 3.3 70B</li>
           </ul>
-         <div class="node-links">
-  <span class="node-link node-link-soon">Coming soon</span>
-</div>
+          <div class="node-links">
+            <span class="node-link node-link-soon">Coming soon</span>
+          </div>
         </div>
       </article>
 
       <article class="node" data-node="3">
         <div class="node-marker"><span class="node-dot"></span></div>
         <div class="node-card">
-          <div class="node-stage">
-            <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+          <div class="node-top">
+            <span class="node-icon node-icon-orange">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+            </span>
+            <div class="node-stage">
+              <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+            </div>
           </div>
           <h3>AI Personality Quiz</h3>
           <p class="node-desc">
@@ -140,80 +192,161 @@
             <li>Python</li><li>LLM API</li><li>Web app</li>
           </ul>
           <div class="node-links">
-  <span class="node-link node-link-soon">Coming soon</span>
-</div>
+            <span class="node-link node-link-soon">Coming soon</span>
+          </div>
         </div>
       </article>
     </div>
+
+    <div class="stats-strip reveal">
+      <div class="stat"><span class="stat-icon">📦</span><span class="stat-value">3+</span><span class="stat-label">Projects Built</span></div>
+      <div class="stat"><span class="stat-icon">🔌</span><span class="stat-value">5+</span><span class="stat-label">Tools &amp; Integrations</span></div>
+      <div class="stat"><span class="stat-icon">🎯</span><span class="stat-value">100%</span><span class="stat-label">Focus on AI &amp; Automation</span></div>
+      <div class="stat"><span class="stat-icon">♾️</span><span class="stat-value">∞</span><span class="stat-label">Learning Everyday</span></div>
+    </div>
   </section>
 
- <!-- ABOUT -->
-<section class="about" id="about" data-num="02">
-  <p class="section-eyebrow">About</p>
-  <div class="about-grid reveal">
-    <div class="about-photo-col">
-      <div class="about-photo-wrap">
-        <img src="photo.png" alt="Waleed Zafar" class="about-photo">
+  <!-- ABOUT -->
+  <section class="about" id="about" data-num="02">
+    <p class="section-eyebrow">About</p>
+    <div class="about-grid reveal">
+      <div class="about-photo-col">
+        <div class="about-photo-wrap">
+          <img src="photo.png" alt="Waleed Zafar" class="about-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="about-photo-fallback" aria-hidden="true">WZ</div>
+        </div>
+        <p class="about-caption">
+          <span class="about-caption-name">Waleed Zafar</span><br>
+          <span class="about-caption-role">AI &amp; Automation Developer</span>
+        </p>
+        <a href="https://www.linkedin.com/in/waleed-zafar-3567903b0/?skipRedirect=true" class="about-linkedin" target="_blank" rel="noopener">
+          <svg class="linkedin-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="1" y="1" width="22" height="22" rx="4"/>
+            <text x="12" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="var(--paper)">in</text>
+          </svg>
+          LinkedIn
+        </a>
       </div>
-      <p class="about-caption">
-        <span class="about-caption-name">Waleed Zafar</span><br>
-        <span class="about-caption-role">AI &amp; Automation Developer</span>
-      </p>
-      <a href="https://www.linkedin.com/in/waleed-zafar-3567903b0/?skipRedirect=true" class="about-linkedin" target="_blank" rel="noopener">
-        <svg class="linkedin-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="1" y="1" width="22" height="22" rx="4"/>
-          <text x="12" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="var(--paper)">in</text>
-        </svg>
-        LinkedIn
-      </a>
+      <div class="about-body">
+        <h2 class="section-title">
+          I studied language before I studied code — that's why I care whether <span class="highlight">the output actually reads right.</span>
+        </h2>
+        <p>
+          I'm a BS AI student at UET Lahore with a background in English teaching, which
+          shapes a lot of what I build — tools like a grammar and writing assistant come
+          from noticing where language and automation actually intersect for real people.
+        </p>
+        <p>
+          Right now I'm focused on API integration and AI chatbot development: taking a
+          business problem, wiring the right model and the right data together, and shipping
+          something that solves it — not a demo, a tool someone can actually use.
+        </p>
+      </div>
     </div>
-    <div class="about-body">
-      <h2 class="section-title">
-        I studied language before I studied code — that's why I care whether <span class="highlight">the output actually reads right.</span>
-      </h2>
-      <p>
-        I'm a BS AI student at UET Lahore with a background in English teaching, which
-        shapes a lot of what I build — tools like a grammar and writing assistant come
-        from noticing where language and automation actually intersect for real people.
-      </p>
-      <p>
-        Right now I'm focused on API integration and AI chatbot development: taking a
-        business problem, wiring the right model and the right data together, and shipping
-        something that solves it — not a demo, a tool someone can actually use.
-      </p>
-    </div>
-  </div>
-</section>
+  </section>
+
   <!-- STACK -->
   <section class="stack" id="stack" data-num="03">
-    <p class="section-eyebrow">Stack</p>
-<h2 class="section-title">What I <span class="highlight">build with</span></h2>
+    <p class="section-eyebrow">What I Build With</p>
+    <h2 class="section-title">My <span class="highlight">stack</span></h2>
     <div class="stack-grid reveal">
-      <div class="stack-item"><span class="stack-label">languages</span><span class="stack-value">Python · JavaScript</span></div>
-      <div class="stack-item"><span class="stack-label">backend</span><span class="stack-value">Flask · REST APIs</span></div>
-      <div class="stack-item"><span class="stack-label">ai / llm</span><span class="stack-value">Groq API · Llama 3.3 70B · Prompt design</span></div>
-      <div class="stack-item"><span class="stack-label">documents</span><span class="stack-value">python-docx · Automated formatting</span></div>
-      <div class="stack-item"><span class="stack-label">tools</span><span class="stack-value">Git · GitHub · VS Code</span></div>
-      <div class="stack-item"><span class="stack-label">currently learning</span><span class="stack-value">Payment API integration</span></div>
+      <div class="stack-item">
+        <span class="stack-icon">🧠</span>
+        <span class="stack-label">Languages</span>
+        <span class="stack-value">Python · JavaScript</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-icon">🗄️</span>
+        <span class="stack-label">Backend</span>
+        <span class="stack-value">Flask · REST APIs</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-icon">✨</span>
+        <span class="stack-label">AI / LLM</span>
+        <span class="stack-value">Groq API · Llama 3.3 70B · Prompt design</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-icon">📄</span>
+        <span class="stack-label">Documents</span>
+        <span class="stack-value">python-docx · Automated formatting</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-icon">🛠️</span>
+        <span class="stack-label">Tools</span>
+        <span class="stack-value">Git · GitHub · VS Code</span>
+      </div>
+      <div class="stack-item">
+        <span class="stack-icon">📈</span>
+        <span class="stack-label">Currently Learning</span>
+        <span class="stack-value">Payment API integration</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-head">
+      <div>
+        <p class="section-eyebrow">What People Say</p>
+        <h2 class="section-title">Kind words from <span class="highlight">collaborators</span></h2>
+      </div>
+      <div class="carousel-controls">
+        <button type="button" class="carousel-btn" data-dir="-1" aria-label="Previous testimonial">←</button>
+        <button type="button" class="carousel-btn" data-dir="1" aria-label="Next testimonial">→</button>
+      </div>
+    </div>
+
+    <p class="sample-note">Sample quotes below — placeholders until real testimonials are added.</p>
+
+    <div class="carousel">
+      <div class="carousel-track">
+        <figure class="testimonial-card">
+          <span class="quote-mark">“</span>
+          <blockquote>Waleed has a strong grasp of AI workflows and ships fast. He understands both the big picture and the details.</blockquote>
+          <figcaption>
+            <span class="testimonial-avatar">AR</span>
+            <span>
+              <span class="testimonial-name">Ahmed R.</span>
+              <span class="testimonial-role">Sample quote — Product Manager</span>
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="testimonial-card">
+          <span class="quote-mark">“</span>
+          <blockquote>Great to work with. He turns vague ideas into working tools and keeps improving the experience.</blockquote>
+          <figcaption>
+            <span class="testimonial-avatar">SK</span>
+            <span>
+              <span class="testimonial-name">Sarah K.</span>
+              <span class="testimonial-role">Sample quote — Educator &amp; Content Lead</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="carousel-dots"></div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section class="contact" id="contact" data-num="04">
-    <p class="section-eyebrow">Contact</p>
-<h2 class="section-title contact-title reveal">Have a problem an AI tool could solve?<br>Tell me what it does — <span class="highlight">I'll tell you if I can build it.</span></h2>
+    <p class="section-eyebrow">Let's Connect</p>
+    <h2 class="section-title contact-title reveal">Have a problem an AI tool could solve?<br>Tell me what it does — <span class="highlight">I'll tell you if I can build it.</span></h2>
     <div class="contact-links reveal">
-   <a href="mailto:waleedzafar161@gmail.com" class="contact-link">
-  <span class="contact-label">Email</span>
-  <span class="contact-value">waleedzafar161@gmail.com ↗</span>
-</a>
+      <a href="mailto:waleedzafar161@gmail.com" class="contact-link">
+        <span class="contact-icon">✉️</span>
+        <span class="contact-value">waleedzafar161@gmail.com</span>
+      </a>
       <a href="https://github.com/waleedzafar9" class="contact-link" target="_blank" rel="noopener">
-        <span class="contact-label">github</span>
-        <span class="contact-value">github.com/waleedzafar9 ↗</span>
+        <span class="contact-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        </span>
+        <span class="contact-value">github.com/waleedzafar9</span>
       </a>
       <a href="https://www.linkedin.com/in/waleed-zafar-3567903b0/?skipRedirect=true" class="contact-link" target="_blank" rel="noopener">
-        <span class="contact-label">Linkedin</span>
-        <span class="contact-value">Linkedin↗</span>
+        <span class="contact-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="1" y="1" width="22" height="22" rx="4"/></svg>
+        </span>
+        <span class="contact-value">LinkedIn</span>
       </a>
     </div>
   </section>
@@ -221,7 +354,7 @@
 </main>
 
 <footer class="footer">
-  <p>Built by Waleed Zafar.No-Template , No-Theme — just HTML, CSS, and JS.</p>
+  <p>Built by Waleed Zafar. No template, no theme — just HTML, CSS, and JS.</p>
 </footer>
 
 <script src="script.js"></script>

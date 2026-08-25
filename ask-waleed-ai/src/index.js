@@ -91,8 +91,7 @@ numbers that aren't stated here.
 `.trim();
 
 const ALLOWED_ORIGIN = "https://waleedzafar9.github.io";
-const GROQ_MODEL = "llama-3.3-70b-versatile";
-
+const GROQ_MODEL = "openai/gpt-oss-120b";
 export default {
   async fetch(request, env) {
     // Handle CORS preflight

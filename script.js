@@ -353,3 +353,114 @@ if (cmdkList) {
     });
   });
 }
+
+/* =========================================================
+   ASK AI — chat widget
+   Change WORKER_URL to your deployed Cloudflare Worker URL.
+========================================================= */
+const WORKER_URL = 'https://ask-waleed-ai.waleedzafar.workers.dev';
+const askAiForm = document.getElementById('askAiForm');
+const askAiInput = document.getElementById('askAiInput');
+const askAiSend = document.getElementById('askAiSend');
+const askAiMessages = document.getElementById('askAiMessages');
+const askAiSuggestions = document.getElementById('askAiSuggestions');
+
+let askAiHistory = [];
+let askAiBusy = false;
+
+function askAiAppendMessage(role, text, extraClass = '') {
+  const wrap = document.createElement('div');
+  wrap.className = `ask-ai-msg ask-ai-msg-${role} ${extraClass}`.trim();
+
+  const avatar = document.createElement('span');
+  avatar.className = `ask-ai-avatar ask-ai-avatar-${role}`;
+  avatar.textContent = role === 'bot' ? 'AI' : 'You';
+
+  const p = document.createElement('p');
+  p.textContent = text;
+
+  wrap.appendChild(avatar);
+  wrap.appendChild(p);
+  askAiMessages.appendChild(wrap);
+  askAiMessages.scrollTop = askAiMessages.scrollHeight;
+  return wrap;
+}
+
+function askAiAppendLoading() {
+  const wrap = document.createElement('div');
+  wrap.className = 'ask-ai-msg ask-ai-msg-bot ask-ai-msg-loading';
+  wrap.innerHTML = `
+    <span class="ask-ai-avatar ask-ai-avatar-bot">AI</span>
+    <p><span class="ask-ai-dot"></span><span class="ask-ai-dot"></span><span class="ask-ai-dot"></span></p>
+  `;
+  askAiMessages.appendChild(wrap);
+  askAiMessages.scrollTop = askAiMessages.scrollHeight;
+  return wrap;
+}
+
+function askAiSetBusy(busy) {
+  askAiBusy = busy;
+  askAiInput.disabled = busy;
+  askAiSend.disabled = busy;
+  askAiSuggestions?.querySelectorAll('.ask-ai-chip').forEach((chip) => {
+    chip.disabled = busy;
+  });
+}
+
+async function askAiSendMessage(message) {
+  if (!message || askAiBusy) return;
+
+  askAiAppendMessage('user', message);
+  askAiHistory.push({ role: 'user', content: message });
+  askAiSetBusy(true);
+
+  const loadingEl = askAiAppendLoading();
+
+  try {
+    const res = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message,
+        history: askAiHistory.slice(-6),
+      }),
+    });
+
+    const data = await res.json();
+    loadingEl.remove();
+
+    if (!res.ok || data.error) {
+      askAiAppendMessage('bot', "Sorry, I couldn't reach the AI just now. Please try again in a moment, or email waleedzafar161@gmail.com directly.", 'ask-ai-error');
+      return;
+    }
+
+    askAiAppendMessage('bot', data.reply);
+    askAiHistory.push({ role: 'assistant', content: data.reply });
+  } catch (err) {
+    loadingEl.remove();
+    askAiAppendMessage('bot', "Something went wrong connecting to the AI. Please try again shortly.", 'ask-ai-error');
+  } finally {
+    askAiSetBusy(false);
+    askAiInput.focus();
+  }
+}
+
+if (askAiForm) {
+  askAiForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const message = askAiInput.value.trim();
+    if (!message) return;
+    askAiInput.value = '';
+    askAiSendMessage(message);
+  });
+}
+
+if (askAiSuggestions) {
+  askAiSuggestions.querySelectorAll('.ask-ai-chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const question = chip.textContent;
+      askAiSendMessage(question);
+      askAiSuggestions.style.display = 'none';
+    });
+  });
+}

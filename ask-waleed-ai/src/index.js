@@ -2,11 +2,11 @@
  * Cloudflare Worker — "Ask Anything About Me" backend
  * -----------------------------------------------------
  * Holds Waleed's bio as system context and proxies chat
- * requests to the Anthropic API, keeping the API key
- * hidden from the public GitHub Pages frontend.
+ * requests to the Groq API (free tier), keeping the API
+ * key hidden from the public GitHub Pages frontend.
  *
  * Deploy with: wrangler deploy
- * Set your key with: wrangler secret put ANTHROPIC_API_KEY
+ * Set your key with: wrangler secret put GROQ_API_KEY
  */
 
 const SYSTEM_PROMPT = `
@@ -91,6 +91,7 @@ numbers that aren't stated here.
 `.trim();
 
 const ALLOWED_ORIGIN = "https://waleedzafar9.github.io";
+const GROQ_MODEL = "llama-3.3-70b-versatile";
 
 export default {
   async fetch(request, env) {
@@ -121,7 +122,10 @@ export default {
     // Optional: pass short conversation history from the frontend
     const history = Array.isArray(body?.history) ? body.history.slice(-6) : [];
 
+    // Groq's Chat Completions API is OpenAI-compatible: system prompt
+    // goes in the messages array (not a separate top-level field).
     const messages = [
+      { role: "system", content: SYSTEM_PROMPT },
       ...history.map((m) => ({
         role: m.role === "assistant" ? "assistant" : "user",
         content: String(m.content).slice(0, 1000),
@@ -130,29 +134,27 @@ export default {
     ];
 
     try {
-      const anthropicRes = await fetch("https://api.anthropic.com/v1/messages", {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": env.ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
+          "Authorization": `Bearer ${env.GROQ_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "claude-haiku-4-5-20251001",
+          model: GROQ_MODEL,
           max_tokens: 400,
-          system: SYSTEM_PROMPT,
           messages,
         }),
       });
 
-      if (!anthropicRes.ok) {
-        const errText = await anthropicRes.text();
-        console.error("Anthropic API error:", errText);
+      if (!groqRes.ok) {
+        const errText = await groqRes.text();
+        console.error("Groq API error:", errText);
         return jsonResponse({ error: "Upstream API error" }, 502);
       }
 
-      const data = await anthropicRes.json();
-      const reply = data?.content?.find((b) => b.type === "text")?.text
+      const data = await groqRes.json();
+      const reply = data?.choices?.[0]?.message?.content
         || "Sorry, I couldn't generate a response just now.";
 
       return jsonResponse({ reply });

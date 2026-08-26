@@ -294,6 +294,8 @@ function runCmdkAction(li) {
     } else {
       window.open(target, '_blank', 'noopener');
     }
+  } else if (action === 'open-ask-ai') {
+    openAskAiSidebar();
   }
   closeCmdk();
 }
@@ -353,7 +355,60 @@ if (cmdkList) {
     });
   });
 }
+/* =========================================================
+   ASK AI — floating sidebar toggle
+========================================================= */
+const askAiFab = document.getElementById('askAiFab');
+const askAiFabLabel = document.getElementById('askAiFabLabel');
+const askAiSidebar = document.getElementById('askAiSidebar');
+const askAiBackdrop = document.getElementById('askAiBackdrop');
+const askAiCloseBtn = document.getElementById('askAiClose');
 
+function openAskAiSidebar() {
+  askAiSidebar.classList.add('open');
+  askAiBackdrop.classList.add('open');
+  askAiFab.classList.add('open');
+  askAiSidebar.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  askAiFabLabel?.classList.remove('show');
+  setTimeout(() => document.getElementById('askAiInput')?.focus(), 320);
+}
+
+function closeAskAiSidebar() {
+  askAiSidebar.classList.remove('open');
+  askAiBackdrop.classList.remove('open');
+  askAiFab.classList.remove('open');
+  askAiSidebar.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function toggleAskAiSidebar() {
+  askAiSidebar.classList.contains('open') ? closeAskAiSidebar() : openAskAiSidebar();
+}
+
+askAiFab?.addEventListener('click', toggleAskAiSidebar);
+askAiCloseBtn?.addEventListener('click', closeAskAiSidebar);
+askAiBackdrop?.addEventListener('click', closeAskAiSidebar);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && askAiSidebar?.classList.contains('open')) {
+    closeAskAiSidebar();
+  }
+});
+
+document.querySelectorAll('.js-open-ask-ai').forEach((el) => {
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    openAskAiSidebar();
+  });
+});
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    askAiFabLabel?.classList.add('show');
+    setTimeout(() => askAiFabLabel?.classList.remove('show'), 4000);
+  }, 1800);
+});
 /* =========================================================
    ASK AI — chat widget
    Change WORKER_URL to your deployed Cloudflare Worker URL.

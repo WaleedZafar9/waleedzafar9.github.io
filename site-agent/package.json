@@ -1,0 +1,16 @@
+{
+  "name": "site-agent",
+  "version": "1.0.0",
+  "description": "Instruction-to-code-to-deploy agent for a personal website + Cloudflare Worker",
+  "main": "agent.js",
+  "type": "commonjs",
+  "scripts": {
+    "agent": "node agent.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

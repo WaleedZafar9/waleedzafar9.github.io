@@ -15,6 +15,11 @@ themeToggle.addEventListener('click', () => {
 });
 
 /* =========================================================
+   REDUCED MOTION CHECK — gate the new motion additions
+========================================================= */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* =========================================================
    SCROLL PROGRESS BAR
 ========================================================= */
 const scrollProgress = document.getElementById('scrollProgress');
@@ -38,16 +43,56 @@ if (backToTop) {
 
 /* =========================================================
    REVEAL ON SCROLL (feature cards, pipeline nodes, sections)
+   — CSS now animates filter:blur() alongside opacity/transform,
+   this logic is unchanged, it just toggles the class.
 ========================================================= */
 const revealTargets = document.querySelectorAll('.node, .reveal');
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('in-view');
+      if (entry.target.classList.contains('stats-strip')) {
+        runStatsCountUp(entry.target);
+      }
     }
   });
 }, { threshold: 0.3 });
 revealTargets.forEach((el) => revealObserver.observe(el));
+
+/* =========================================================
+   COUNT-UP STATS — parses the existing "3+", "5+", "100%", "∞"
+   text so no HTML changes are required. Runs once per element.
+========================================================= */
+function runStatsCountUp(scope) {
+  const valueEls = scope.querySelectorAll('.stat-value');
+  valueEls.forEach((el) => {
+    if (el.dataset.counted === 'true') return;
+    el.dataset.counted = 'true';
+
+    const raw = el.textContent.trim();
+    const match = raw.match(/^(\d+)(.*)$/); // leading integer + trailing suffix (+, %, etc.)
+
+    if (!match || prefersReducedMotion) {
+      // No leading number (e.g. "∞") or reduced motion — leave as-is.
+      return;
+    }
+
+    const target = parseInt(match[1], 10);
+    const suffix = match[2] || '';
+    const duration = 1100;
+    const start = performance.now();
+
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const current = Math.round(target * eased);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(tick);
+  });
+}
 
 /* =========================================================
    PIPELINE LINE DRAW ON SCROLL
@@ -73,10 +118,20 @@ window.addEventListener('resize', updatePipelineDraw);
 window.addEventListener('load', updatePipelineDraw);
 
 /* =========================================================
-   ACTIVE NAV LINK ON SCROLL
+   ACTIVE NAV LINK ON SCROLL + SLIDING INDICATOR
 ========================================================= */
 const sections = document.querySelectorAll('main section[id]');
+const navLinksWrap = document.querySelector('.nav-links');
 const navLinks = document.querySelectorAll('.nav-links a');
+
+function positionNavIndicator(link) {
+  if (!navLinksWrap || !link) return;
+  const wrapRect = navLinksWrap.getBoundingClientRect();
+  const linkRect = link.getBoundingClientRect();
+  navLinksWrap.style.setProperty('--ind-x', `${linkRect.left - wrapRect.left}px`);
+  navLinksWrap.style.setProperty('--ind-w', `${linkRect.width}px`);
+  navLinksWrap.style.setProperty('--ind-o', '1');
+}
 
 const navObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -86,14 +141,22 @@ const navObserver = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       navLinks.forEach((l) => l.classList.remove('active'));
       link.classList.add('active');
+      positionNavIndicator(link);
     }
   });
 }, { rootMargin: '-40% 0px -50% 0px' });
 
 sections.forEach((s) => navObserver.observe(s));
 
+window.addEventListener('resize', () => {
+  const active = document.querySelector('.nav-links a.active');
+  if (active) positionNavIndicator(active);
+});
+
 /* =========================================================
    CARD SPOTLIGHT + TILT ON HOVER (project cards)
+   — drives --mouse-x/--mouse-y (glow) and --tilt-x/--tilt-y
+   (rotation) so CSS owns the transform + transition.
 ========================================================= */
 const spotlightCards = document.querySelectorAll('.node-card');
 
@@ -106,13 +169,16 @@ spotlightCards.forEach((card) => {
     card.style.setProperty('--mouse-x', `${x * 100}%`);
     card.style.setProperty('--mouse-y', `${y * 100}%`);
 
+    if (prefersReducedMotion) return;
     const tiltX = (y - 0.5) * -6;
     const tiltY = (x - 0.5) * 6;
-    card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    card.style.setProperty('--tilt-x', `${tiltX}deg`);
+    card.style.setProperty('--tilt-y', `${tiltY}deg`);
   });
 
   card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+    card.style.setProperty('--tilt-x', '0deg');
+    card.style.setProperty('--tilt-y', '0deg');
   });
 });
 
@@ -168,8 +234,31 @@ function typeTerminal() {
   }
   typeNextLine();
 }
+
+/* =========================================================
+   HERO ENTRANCE ORCHESTRATION
+   Adds .hero-run once, right before the terminal starts typing,
+   so the staggered copy/terminal fade-blur-in plays on load.
+========================================================= */
+function runHeroEntrance() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  if (prefersReducedMotion) {
+    hero.classList.add('hero-run');
+    return;
+  }
+  requestAnimationFrame(() => hero.classList.add('hero-run'));
+}
+
 window.addEventListener('load', () => {
+  runHeroEntrance();
+  updatePipelineDraw();
   setTimeout(typeTerminal, 300);
+  const active = document.querySelector('.nav-links a.active') || navLinks[0];
+  if (active) {
+    active.classList.add('active');
+    positionNavIndicator(active);
+  }
 });
 
 /* =========================================================
@@ -228,20 +317,27 @@ if (railLinks.length) {
 
 /* =========================================================
    MAGNETIC BUTTONS — pull toward cursor on hover
+   Sets --mx/--my; CSS (transform:translate(var(--mx),var(--my)))
+   owns the actual transform so it composes cleanly with each
+   element's other states (e.g. theme-toggle's :active rotate).
 ========================================================= */
-const magneticEls = document.querySelectorAll('.btn-primary, .btn-ghost, .theme-toggle');
+const magneticEls = document.querySelectorAll('.btn-primary, .btn-ghost, .theme-toggle, .cmdk-trigger');
 
-magneticEls.forEach((el) => {
-  el.addEventListener('mousemove', (e) => {
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+if (!prefersReducedMotion) {
+  magneticEls.forEach((el) => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.setProperty('--mx', `${x * 0.25}px`);
+      el.style.setProperty('--my', `${y * 0.25}px`);
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.setProperty('--mx', '0px');
+      el.style.setProperty('--my', '0px');
+    });
   });
-  el.addEventListener('mouseleave', () => {
-    el.style.transform = 'translate(0, 0)';
-  });
-});
+}
 
 /* =========================================================
    COMMAND PALETTE

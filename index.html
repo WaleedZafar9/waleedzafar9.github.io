@@ -109,7 +109,7 @@
         <svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.36.5.98.5 1.6h6c0-.62 0-1.24.5-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
       <h3>Problem Solver</h3>
-      <p>I build tools tried and solve real problems.</p>
+      <p>I build tools that solve real problems.</p>
     </div>
     <div class="feature-card reveal">
       <span class="feature-icon icon-mint">
@@ -145,8 +145,8 @@
     </div>
 
     <div class="pipeline">
-      <svg class="pipeline-line" viewBox="0 0 4 900" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M2,0 L2,900" />
+      <svg class="pipeline-line" viewBox="0 0 4 1150" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,0 L2,1150" />
       </svg>
 
       <article class="node" data-node="1">
@@ -180,23 +180,23 @@
         <div class="node-card">
           <div class="node-top">
             <span class="node-icon node-icon-purple">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="6" y="7" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 3v3M15 3v3M4 11h2M18 11h2M9 21v-3M15 21v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="9.5" cy="12.5" r="1" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m17 9 4-2v10l-4-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
             </span>
             <div class="node-stage">
               <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
             </div>
           </div>
-          <h3>AI Writing Assistant</h3>
+          <h3>AI Video Generator — Ashtech</h3>
           <p class="node-desc">
-            Rough or informal text goes in. Llama 3.3 70B, served through the Groq API,
-            rewrites it for grammar, tone, and clarity — built on a Flask backend that
-            keeps response times fast enough to feel live.
+            Built for Ashtech. A prompt or script goes in, an AI pipeline handles scene generation,
+            voice, and assembly, and a ready-to-publish video comes out — cutting a manual editing
+            job down to a single request.
           </p>
           <ul class="node-tags">
-            <li>Flask</li><li>Groq API</li><li>Llama 3.3 70B</li>
+            <li>Python</li><li>LLM API</li><li>Video pipeline</li>
           </ul>
           <div class="node-links">
-            <span class="node-link node-link-soon">Coming soon</span>
+            <span class="node-link node-link-soon">Client project — code private</span>
           </div>
         </div>
       </article>
@@ -206,30 +206,56 @@
         <div class="node-card">
           <div class="node-top">
             <span class="node-icon node-icon-orange">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M8 4v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             </span>
             <div class="node-stage">
               <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
             </div>
           </div>
-          <h3>AI Personality Quiz</h3>
+          <h3>Web Portal — Ashtech</h3>
           <p class="node-desc">
-            A short set of answers goes in. The model scores and interprets responses
-            in real time, then returns a personalized read-out — no static, hardcoded
-            result banks.
+            A full web portal built for Ashtech to manage their business operations online —
+            from data entry to reporting, wrapped in a clean, authenticated interface built on
+            a Flask backend.
           </p>
           <ul class="node-tags">
-            <li>Python</li><li>LLM API</li><li>Web app</li>
+            <li>Flask</li><li>REST APIs</li><li>Web portal</li>
           </ul>
           <div class="node-links">
-            <span class="node-link node-link-soon">Coming soon</span>
+            <span class="node-link node-link-soon">Client project — code private</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="node" data-node="4">
+        <div class="node-marker"><span class="node-dot"></span></div>
+        <div class="node-card">
+          <div class="node-top">
+            <span class="node-icon node-icon-lavender">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 12 3 7M12 12v10M12 12l9-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="node-stage">
+              <span>input</span><span>→</span><span>process</span><span>→</span><span>output</span>
+            </div>
+          </div>
+          <h3>Weed Detection — Computer Vision</h3>
+          <p class="node-desc">
+            Field images go in. A vision model, fine-tuned on labeled crop and weed data,
+            learns to tell them apart and outputs bounding boxes ready to plug into a
+            targeted spraying or alerting system.
+          </p>
+          <ul class="node-tags">
+            <li>Python</li><li>Computer Vision</li><li>Model fine-tuning</li>
+          </ul>
+          <div class="node-links">
+            <span class="node-link node-link-soon">In progress</span>
           </div>
         </div>
       </article>
     </div>
 
     <div class="stats-strip reveal">
-      <div class="stat"><span class="stat-icon">📦</span><span class="stat-value">3+</span><span class="stat-label">Projects Built</span></div>
+      <div class="stat"><span class="stat-icon">📦</span><span class="stat-value">4+</span><span class="stat-label">Projects Built</span></div>
       <div class="stat"><span class="stat-icon">🔌</span><span class="stat-value">5+</span><span class="stat-label">Tools &amp; Integrations</span></div>
       <div class="stat"><span class="stat-icon">🎯</span><span class="stat-value">100%</span><span class="stat-label">Focus on AI &amp; Automation</span></div>
       <div class="stat"><span class="stat-icon">♾️</span><span class="stat-value">∞</span><span class="stat-label">Learning Everyday</span></div>
@@ -308,12 +334,12 @@
       <div class="stack-item">
         <span class="stack-icon">📈</span>
         <span class="stack-label">Currently Learning</span>
-        <span class="stack-value">Payment API integration</span>
+        <span class="stack-value">Computer Vision</span>
       </div>
-        <div class="stack-item">
+      <div class="stack-item">
         <span class="stack-icon">🧠</span>
-        <span class="stack-label">model training</span>
-        <span class="stack-value">Fine-Tuning LLMS</span>
+        <span class="stack-label">Model Training</span>
+        <span class="stack-value">Fine-Tuning LLMs · Fine-Tuning Vision Models</span>
       </div>
     </div>
   </section>

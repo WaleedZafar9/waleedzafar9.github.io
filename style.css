@@ -606,12 +606,13 @@ section[data-num]::before{
 .node-icon-green{background:var(--mint-soft);color:var(--mint);}
 .node-icon-purple{background:var(--lavender-soft);color:var(--lavender);}
 .node-icon-orange{background:var(--coral-soft);color:var(--coral);}
+.node-icon-lavender{background:var(--lavender-soft);color:var(--lavender);}
+.node-card h3{font-size:1.15rem;margin-bottom:10px;}
 .node-stage{
   display:flex;gap:6px;align-items:center;
   font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;
   text-transform:uppercase;color:var(--muted);
 }
-.node-card h3{font-size:1.15rem;margin-bottom:10px;}
 .node-desc{color:var(--muted);font-size:1rem;line-height:1.65;font-weight:450;margin-bottom:16px;}
 .node-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
 .node-tags li{
